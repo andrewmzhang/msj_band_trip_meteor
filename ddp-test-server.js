@@ -1,7 +1,22 @@
-Tabs = new Meteor.Collection('tabs');
+Events = new Meteor.Collection('events');
+
+/*
+
+Events contains:
+title:
+desc:
+UTC Date/Time (can we use POSIX??):
+Default Locale (eg. France, Luxembourg, Pacific Standard Time, etc.):
+group relevancy (eg. 1, 2, 3, 4... etc.):
+
+group relevancy: 0 means for all, all positive ints define group specs.
+
+
+*/
+
 
 if (Meteor.isClient) {
-    Meteor.subscribe('tabs');
+    Meteor.subscribe('events');
 
     function extractData(form) {
         return _.reduce($(form).serializeArray(), function (memo, item) {
