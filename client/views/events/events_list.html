@@ -1,0 +1,8 @@
+<template name="eventsList">
+    <h1>Events</h1>
+    <p>This is a database page. All data here is made available. Auth tokens will be required in the future...</p>
+
+    {{#each events}}
+        {{> eventItem}}
+    {{/each}}
+</template>
