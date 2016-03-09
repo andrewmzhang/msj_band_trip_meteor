@@ -1,10 +1,10 @@
-Events = new Meteor.Collection('events');
 
 /*
 
 Events contains:
 title:
 desc:
+author:
 UTC Date/Time (can we use POSIX??):
 Default Locale (eg. France, Luxembourg, Pacific Standard Time, etc.):
 group relevancy (eg. 1, 2, 3, 4... etc.):
@@ -14,6 +14,7 @@ group relevancy: 0 means for all, all positive ints define group specs.
 
 */
 
+Events = new Meteor.Collection('events');
 
 if (Meteor.isClient) {
     Meteor.subscribe('events');
@@ -25,15 +26,16 @@ if (Meteor.isClient) {
         }, {});
     }
 
-    Template.tabs.tabs = function () {
-        return Tabs.find();
+    Template.eventsDisplay.events = function () {
+        return Events.find();
     }
-
+}
+/*
     Template.newTab.events({
         'submit': function (e, tmpl) {
             var tab = extractData(e.currentTarget);
             tab.total = Number(tab.total);
-            Tabs.insert(tab);
+            Events.insert(tab);
             return false;
         }
     });
@@ -52,20 +54,58 @@ if (Meteor.isClient) {
         'submit': function (e, tmpl) {
             var tab = extractData(e.currentTarget);
             tab.total = Number(tab.total);
-            Tabs.update({_id: tab._id}, {
+            Events.update({_id: tab._id}, {
                 $set: {name: tab.name, total: tab.total}
             });
             return false;
         }
     });
-}
+    */
+
+
+
+/*
+
+ Events contains:
+ title:
+ desc:
+ author:
+ UTC Date/Time (can we use POSIX??):
+ Default Locale (eg. France, Luxembourg, Pacific Standard Time, etc.):
+ group relevancy (eg. 1, 2, 3, 4... etc.):
+
+ group relevancy: 0 means for all, all positive ints define group specs.
+
+
+ */
 
 if (Meteor.isServer) {
     console.log('started server');
 
-    Meteor.publish('tabs', function (id) {
-        console.log('subscribing to tabs', id);
-        return Tabs.find();
+    if (Events.find().count() === 0) {
+        Events.insert({
+            title: 'Test Event One',
+            desc: 'this is a test event',
+            author: 'Andy Zhang',
+            date: (new Date(Date.UTC(2017, 5, 25, 18, 30))).toString(),
+            groupRelevancy: 0
+        });
+
+        Events.insert({
+            title: 'Test Event Two',
+            desc: 'this is two',
+            author: 'Sacha Grief',
+            date: (new Date(Date.UTC(2017, 5, 25, 18, 30))).toString(),
+            groupRelevancy: 0
+        });
+
+    }
+
+
+
+    Meteor.publish('events', function (id) {
+        console.log('subscribing to events', id);
+        return Events.find();
     });
 
     Meteor.methods({
@@ -73,13 +113,13 @@ if (Meteor.isServer) {
             console.log('attempting to add a tab');
             console.log(arguments);
             if (_.isObject(tab1)) {
-                Tabs.insert(tab1);
+                Events.insert(tab1);
             }
             if (_.isObject(tab2)) {
-                Tabs.insert(tab2);
+                Events.insert(tab2);
             }
             if (_.isObject(tab3)) {
-                Tabs.insert(tab3);
+                Events.insert(tab3);
             }
             return true;
         }
@@ -96,7 +136,7 @@ if (Meteor.isServer) {
         });
     });
 
-    Tabs.allow({
+    Events.allow({
         insert: function () {
             return true;
         },

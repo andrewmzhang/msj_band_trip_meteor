@@ -3,41 +3,21 @@
 </head>
 
 <body>
-{{> tabs}}
-{{> editTab}}
-{{> newTab}}
+{{> eventsDisplay}}
+
 </body>
 
-<template name="tabs">
-    <h1>Tabs</h1>
+<template name="eventsDisplay">
+    <h1>Events</h1>
+    <p>This is a database page. All data here is made available. Auth tokens will be required in the future...</p>
     <ul>
-        {{#each tabs}}
-        <li>{{> tab}}</li>
+        {{#each events}}
+        <li>{{> event}}</li>
         {{/each}}
     </ul>
 </template>
 
-<template name="tab">
-    <li>{{name}} - ${{total}}</li>
+<template name="event">
+    <li>{{title}}  -- {{desc}} -- {{author}} -- {{date}}  --  {{groupRelevancy}}</li>
 </template>
 
-<template name="newTab">
-    <h1>New Tab</h1>
-
-    <form>
-        <input name="name" placeholder="Name" type="text"/>
-        <input name="total" placeholder="0.00" type="text"/>
-        <input type="submit" value="Create Tab"/>
-    </form>
-</template>
-
-<template name="editTab">
-    <h1>Edit Tab {{tab.name}}</h1>
-
-    <form>
-        <input name="_id" type="hidden" value="{{tab._id}}"/>
-        <input name="name" placeholder="Name" type="text" value="{{tab.name}}"/>
-        <input name="total" type="text" value="{{tab.total}}"/>
-        <input type="submit" value="Update Tab"/>
-    </form>
-</template>
