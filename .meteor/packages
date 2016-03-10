@@ -11,3 +11,8 @@ sacha:spin
 accounts-ui
 accounts-password
 multiply:iron-router-progress
+meteorhacks:npm
+
+
+npm-container
+risul:moment-timezone

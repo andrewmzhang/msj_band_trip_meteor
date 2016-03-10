@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "moment-timezone": {
+      "version": "0.5.1",
+      "dependencies": {
+        "moment": {
+          "version": "2.12.0"
+        }
+      }
+    }
+  }
+}

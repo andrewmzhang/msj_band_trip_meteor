@@ -2,10 +2,19 @@
     <h1>Events</h1>
     <p>This is a database page. All data here is made available. Auth tokens will be required in the future...</p>
 
-    <table style="width:100%">
+    <table style="width:100%;">
+        <tr>
+            <th> title  </th>
+            <th> desc </th>
+            <th> author </th>
+            <th> timezone </th>
+            <th> date (local, not stored)</th>
+            <th> date (UTC)  </th>
+            <th> groupRelevancy</th>
+        </tr>
         {{#each events}}
             <tr>
-                {{> eventItem}}
+                {{> eventListItem}}
             </tr>
         {{/each}}
     </table>
