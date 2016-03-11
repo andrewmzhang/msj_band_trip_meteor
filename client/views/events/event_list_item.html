@@ -1,10 +1,12 @@
-
 <template name="eventListItem">
-    <td> {{title}}  </td>
-    <td> {{desc}} </td>
-    <td> {{author}} </td>
-    <td> {{timezone}} </td>
-    <td> {{localDate date timezone}}  </td>
-    <td> {{date}} </td>
-    <td> {{groupRelevancy}}</td>
+    <tr data-path={{pathFor 'eventPage'}}>
+        <td> {{_id}} </td>
+        <td> {{title}}  </td>
+        <td> {{desc}} </td>
+        <td> {{author}} </td>
+        <td> {{timezone}} </td>
+        <td> {{localDate date timezone}}  </td>
+        <td> {{date}} </td>
+        <td> {{groupRelevancy}}</td>
+    </tr>
 </template>

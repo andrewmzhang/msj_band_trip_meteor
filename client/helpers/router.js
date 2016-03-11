@@ -13,7 +13,13 @@ Router.configure({
 
 Router.map(function() {
     this.route('eventsList', {path: '/'});
-    this.route('loading', {path: '/loading'});
+
+
+    this.route('eventPage', {
+        path: '/event/:_id',
+        data: function() {return Events.findOne(this.params._id);}
+    });
+
 
  //   this.route('eventPage', {
  //       path: '/posts/:_id',

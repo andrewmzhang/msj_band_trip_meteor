@@ -20,5 +20,23 @@ if (Events.find().count() === 0) {
         groupRelevancy: 1
     });
 
+    Events.insert({
+        title: 'Airport SFO',
+        desc: 'Nice airport bro!!',
+        author: 'Andy Zhang',
+        timezone: "America/Los_Angeles",
+        date: moment.tz("2016-03-05T06:30:00", "America/Los_Angeles").tz("Zulu").format(),
+        groupRelevancy: 1
+    });
+
+    Events.insert({
+        title: 'Airport SFO',
+        desc: 'Not so cool airport bro!!',
+        author: 'Andy Zhang',
+        timezone: "America/Los_Angeles",
+        date: moment.tz("2016-03-05T07:30:00", "America/Los_Angeles").tz("Zulu").format(),
+        groupRelevancy: 0
+    });
+
 }
 
