@@ -1,7 +1,9 @@
+
 th {
     background-color: #4CAF50;
     color: white;
 }
+
 
 table, td, th {
     border: 1px solid #ddd;
@@ -9,7 +11,6 @@ table, td, th {
 
 table {
     border-collapse: collapse;
-    width: 100%;
 }
 
 th, td {
@@ -19,4 +20,26 @@ th, td {
 
 tr:hover {
     background-color: lightblue;
+}
+
+
+
+@media all and (min-width: 600px) {
+    a {
+        font-size: 75px;
+    }
+    h1{
+        font-size: 60px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+
+    h3 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 30px;
+    }
 }

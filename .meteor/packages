@@ -3,7 +3,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
 xcv58:collection-api
 iron:router
 standard-minifiers
@@ -16,3 +15,11 @@ meteorhacks:npm
 
 npm-container
 risul:moment-timezone
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+es5-shim
+meteor-base

@@ -1,9 +1,10 @@
 <template name="eventsList">
     <h1>Events</h1>
     <p>This is a database page. All data here is made available. Auth tokens will be required in the future...</p>
-    <p>Click row to access element in details</p>
+    <p>Double click row to access element in details</p>
 
-    <table style="width:100%;">
+
+    <table >
         <tr>
             <th>id</th>
             <th>title</th>
@@ -15,8 +16,8 @@
             <th>groupRelevancy</th>
         </tr>
         {{#each events}}
-                {{> eventListItem}}
-        {{/each}}
+        {{> eventListItem}}
+    {{/each}}
     </table>
 
 

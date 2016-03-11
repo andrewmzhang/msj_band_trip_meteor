@@ -15,6 +15,10 @@ Template.eventListItem.events({
 
     'click tr': function() {
         Router.go('eventPage', {_id: this._id});
+    },
+
+    'longclick tr': function() {
+        Router.go('eventPage', {_id: this._id});
     }
 
 
