@@ -22,9 +22,7 @@ tr:hover {
     background-color: lightblue;
 }
 
-
-
-@media all and (min-width: 600px) {
+@media all and (max-width: 800px) {
     a {
         font-size: 75px;
     }

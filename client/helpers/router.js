@@ -20,6 +20,10 @@ Router.map(function() {
         data: function() {return Events.findOne(this.params._id);}
     });
 
+    this.route('eventAddMaster', {
+        path: '/eventAddMaster'
+    });
+
 
  //   this.route('eventPage', {
  //       path: '/posts/:_id',

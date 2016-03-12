@@ -1,0 +1,42 @@
+<template name="eventAddMaster">
+
+    <!--
+
+    Events contains:
+    title:
+    desc:
+    author:
+    UTC Date/Time (can we use POSIX??):
+    Default Locale (eg. France, Luxembourg, Pacific Standard Time, etc.):
+    group relevancy (eg. 1, 2, 3, 4... etc.):
+
+    group relevancy: 0 means for all, all positive ints define group specs.
+    -->
+
+
+    <form>
+
+
+        Title: <br>
+        <input type="text" name="title" required><br>
+
+        Desc:<br>
+        <input type="" name="desc" required><br>
+
+        Author (this will be filled automatically):<br>
+
+        Date/Time (ISO 8061 format: "2016-03-18T13:30:00" means March 28th, 2016, 1:30 pm): <br>
+        <input type="text" name="date" required><br>
+
+        Timezone: (standard tz callsigns, eg. "Europe/Paris" or "Zulu" for UTC)<br>
+        <input type="text" name="timezone" required><br>
+
+        Group Relevancy: (associate this with certain groups. 0 is all 1 and 2 are for special groups). <br>
+        <input type="number" name="groupRelevancy" required>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+
+</template>
