@@ -30,10 +30,41 @@ Template.eventAddMaster.events({
         var date = moment.tz(day, 'YYYY-MM-DDThh:mm:ss', timezone).tz("Zulu").format();
         var groupRelevancy = event.target.groupRelevancy.value;
 
-        console.log(date);
-        if (!date.isValid()) {
+
+
+        var d = moment(date, 'YYYY-MM-DDThh:mm:ss', true).isValid();
+        if (d == null || !d.isValid()) return false;
+
+        if ((title === null) || title === "" || desc == null || desc == "") {
+            alert("Title invalid");
             return false;
         }
+        if ((desc === null) || desc === "" || desc == null || desc == "") {
+            alert("Description invalid")
+            return false;
+        }
+        if ((author === null) || author === "" || author == null || author == "") {
+            alert("Author invalid");
+            return false;
+        }
+        if ((date === null) || date === "" || date == null || date == "") {
+            alert("Date invalid");
+            return false;
+        }
+        if ((timezone === null) || timezone === "" || timezone == null || timezone == "") {
+            alert("Timezone invalid");
+            return false;
+        }
+        if (groupRelevancy < 0) {
+            alert("Group relevancy invalid");
+            return false;
+        }
+
+        if (!d.isValid() || date !== null || date != null) {
+            console.log("Date format invalid");
+            return false;
+        }
+
 
         var confirm = window.confirm("Is this the correct data:\n" +
             "Title: " + title + "\n" +
@@ -45,9 +76,15 @@ Template.eventAddMaster.events({
         );
 
         if (confirm == true) {
-            console.log("Success");
+            Meteor.call("eventAddMaster", title, desc, author, date, timezone, groupRelevancy, function(error, id) {
+                if (error) {
+                    return alert("Server has errored. Please check inputs. Output: " + error.reason);
+                }
+                alert("Event added to master list!");
+            });
 
         } else {
+            alert("Failed to confirm...");
             console.log("failed");
         }
 
