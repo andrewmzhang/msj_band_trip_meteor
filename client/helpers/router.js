@@ -14,6 +14,7 @@ Router.configure({
 Router.map(function() {
     this.route('eventsList', {path: '/'});
 
+    this.route('login', {path: '/login'});
 
     this.route('eventPage', {
         path: '/event/:_id',

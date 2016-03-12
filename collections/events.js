@@ -56,10 +56,10 @@ Events.allow({
         return false;
     },
     update: function () {
-        return true;
+        return false;
     },
     remove: function () {
-        return true;
+        return false;
     }
 });
 
