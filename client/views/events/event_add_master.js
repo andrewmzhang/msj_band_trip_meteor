@@ -27,27 +27,21 @@ Template.eventAddMaster.events({
 
         var day = event.target.date.value;
 
-        var date = moment.tz(day, 'YYYY-MM-DDThh:mm:ss', timezone).tz("Zulu").format();
-        var groupRelevancy = event.target.groupRelevancy.value;
 
-
-
-        var d = moment(date, 'YYYY-MM-DDThh:mm:ss', true).isValid();
-        if (d == null || !d.isValid()) return false;
 
         if ((title === null) || title === "" || desc == null || desc == "") {
             alert("Title invalid");
             return false;
         }
         if ((desc === null) || desc === "" || desc == null || desc == "") {
-            alert("Description invalid")
+            alert("Description invalid");
             return false;
         }
         if ((author === null) || author === "" || author == null || author == "") {
             alert("Author invalid");
             return false;
         }
-        if ((date === null) || date === "" || date == null || date == "") {
+        if ((day === null) || day === "" || day == null || day == "") {
             alert("Date invalid");
             return false;
         }
@@ -60,10 +54,22 @@ Template.eventAddMaster.events({
             return false;
         }
 
-        if (!d.isValid() || date !== null || date != null) {
-            console.log("Date format invalid");
+        console.log("Strings passed");
+
+        var date = moment.tz(day, 'YYYY-MM-DDThh:mm:ss', timezone).tz("Zulu").format();
+        var groupRelevancy = event.target.groupRelevancy.value;
+
+
+
+        var d = moment(day, 'YYYY-MM-DDThh:mm:ss', true);
+
+
+        if (!d.isValid() || d === null) {
+            alert("Date format invalid");
             return false;
         }
+
+
 
 
         var confirm = window.confirm("Is this the correct data:\n" +
@@ -75,6 +81,8 @@ Template.eventAddMaster.events({
             "Group Rel:" + groupRelevancy + "\n"
         );
 
+        console.log(date);
+
         if (confirm == true) {
             Meteor.call("eventAddMaster", title, desc, author, date, timezone, groupRelevancy, function(error, id) {
                 if (error) {
@@ -82,7 +90,6 @@ Template.eventAddMaster.events({
                 }
                 alert("Event added to master list!");
             });
-
         } else {
             alert("Failed to confirm...");
             console.log("failed");

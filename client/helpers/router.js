@@ -2,8 +2,8 @@
  * Created by caesar on 3/9/16.
  */
 Router.configure({
-    //layoutTemplate: 'layout',
-    //loadingTemplate: 'loading',
+    layoutTemplate: 'layout',
+    loadingTemplate: 'loading',
     waitOn: function() {
         return Meteor.subscribe('events');
     },

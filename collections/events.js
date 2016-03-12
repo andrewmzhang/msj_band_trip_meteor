@@ -5,28 +5,55 @@ Events = new Meteor.Collection('events');
 
 
 Meteor.methods({
-    'addTab': function (tab1, tab2, tab3) {
-        console.log('attempting to add a tab');
-        console.log(arguments);
-        if (_.isObject(tab1)) {
-            Events.insert(tab1);
+    eventAddMaster: function (title, desc, author, date, timezone, gr) {
+
+
+
+        console.log("Triggered add New");
+
+
+        var d = moment(date, 'YYYY-MM-DDThh:mm:ssZ', true);
+        if (!d.isValid() || d == null || d === null) {
+            throw new Meteor.Error("Date mis-formatted", "The date you submitted is incorrectly formatted" );
         }
-        if (_.isObject(tab2)) {
-            Events.insert(tab2);
+
+        if ((title === null) || title === "" || desc == null || desc == "") {
+            throw new Meteor.Error("Title invalid", "The title you submitted is erroneous" );
         }
-        if (_.isObject(tab3)) {
-            Events.insert(tab3);
+        if ((desc === null) || desc === "" || desc == null || desc == "") {
+            throw new Meteor.Error("Description invalid", "The description you submitted is erroneous" );
         }
-        return true;
+        if ((author === null) || author === "" || author == null || author == "") {
+            throw new Meteor.Error("Author invalid", "The author you submitted is erroneous" );
+        }
+        if ((date === null) || date === "" || date == null || date == "") {
+            throw new Meteor.Error("Date invalid", "The date you submitted is erroneous" );
+        }
+        if ((timezone === null) || timezone === "" || timezone == null || timezone == "") {
+            throw new Meteor.Error("Timezone invalid", "The timezone you submitted is erroneous" );
+        }
+        if (gr < 0) {
+            throw new Meteor.Error("Group Relevancy invalid", "The title you submitted is negative" );
+        }
+
+        console.log("Inserting New");
+
+        Events.insert({
+            title: title,
+            desc: desc,
+            author: author,
+            date: date,
+            timezone: timezone,
+            groupRelevancy: gr
+        });
     }
 });
-
 
 // Please replace this eventually!!
 
 Events.allow({
     insert: function () {
-        return true;
+        return false;
     },
     update: function () {
         return true;

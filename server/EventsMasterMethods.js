@@ -2,11 +2,11 @@
  * Created by Belisarius on 3/11/2016.
  */
 
-
+/*
 Meteor.methods({
-    addEventMaster: function (title, desc, author, date, timezone, gr) {
+    eventAddMaster: function (title, desc, author, date, timezone, gr) {
 
-        var d = moment(date, 'YYYY-MM-DDThh:mm:ss', true).isValid();
+        var d = moment(date, 'YYYY-MM-DDThh:mm:ss', true);
         if (d == null || !d.isValid()) return false;
 
         if ((title === null) || title === "" || desc == null || desc == "") {
@@ -43,4 +43,4 @@ Meteor.methods({
             groupRelevancy: gr
         });
     }
-});
+}); */
