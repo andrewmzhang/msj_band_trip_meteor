@@ -33,6 +33,10 @@ tr:hover {
     float: none;
 }
 
+.pc-container div div {
+    white-space: pre;
+}
+
 #login-screen #login-dropdown-list {
     display: block;
 }

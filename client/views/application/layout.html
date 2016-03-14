@@ -1,9 +1,12 @@
 <template name="layout">
 
     <a href="/">Home</a>
+    <a href="/users">Users (admin only)</a>
     <a href="/login">Login</a>
     <a href="/eventAddMaster">Add Event (Admin)</a>
     <a href="#">Request Event (users)</a>
+
+    {{> sAlert}}
 
     {{> yield}}
 </template>

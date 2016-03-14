@@ -30,31 +30,29 @@ Template.eventAddMaster.events({
 
 
         if ((title === null) || title === "" || desc == null || desc == "") {
-            alert("Title invalid");
+            sAlert.warning("Title invalid");
             return false;
         }
         if ((desc === null) || desc === "" || desc == null || desc == "") {
-            alert("Description invalid");
+            sAlert.warning("Description invalid");
             return false;
         }
         if ((author === null) || author === "" || author == null || author == "") {
-            alert("Author invalid");
+            sAlert.warning("Author invalid");
             return false;
         }
         if ((day === null) || day === "" || day == null || day == "") {
-            alert("Date invalid");
+            sAlert.warning("Date invalid");
             return false;
         }
         if ((timezone === null) || timezone === "" || timezone == null || timezone == "") {
-            alert("Timezone invalid");
+            sAlert.warning("Timezone invalid");
             return false;
         }
         if (groupRelevancy < 0) {
-            alert("Group relevancy invalid");
+            sAlert.warning("Group relevancy invalid");
             return false;
         }
-
-        console.log("Strings passed");
 
         var date = moment.tz(day, 'YYYY-MM-DDThh:mm:ss', timezone).tz("Zulu").format();
         var groupRelevancy = event.target.groupRelevancy.value;
@@ -65,12 +63,43 @@ Template.eventAddMaster.events({
 
 
         if (!d.isValid() || d === null) {
-            alert("Date format invalid");
+            sAlert.warning("Date format invalid");
             return false;
         }
 
+        var confirm = false;
+        new Confirmation({
+            message: "Is this the correct data:\n" +
+            "Title: " + title + "\n" +
+            "Desc: " + desc + "\n" +
+            "Author: " + author + "\n" +
+            "Date: " + moment(date).tz(timezone).format() + "\n" +
+            "TimeZone: " + timezone + "\n" +
+            "Group Rel:" + groupRelevancy,
+
+            title: "Confirm Event Data",
+            cancelText: "No",
+            okText: "Yes",
+            success: true,
+            focus: "cancel"
+        }, function (ok) {
+            console.log(ok);
+            if (!ok) {
+                sAlert.info("Failed to confirm. Data not sent!");
+                return;
+            }
+
+            Meteor.call("eventAddMaster", title, desc, author, date, timezone, groupRelevancy, function (error, id) {
+                if (error) {
+                    return sAlert.error("Server error. Please check inputs. Output: " + error.reason);
+                }
+                return sAlert.success("Event added to master list!");
+            });
 
 
+        });
+
+/*
 
         var confirm = window.confirm("Is this the correct data:\n" +
             "Title: " + title + "\n" +
@@ -81,7 +110,6 @@ Template.eventAddMaster.events({
             "Group Rel:" + groupRelevancy + "\n"
         );
 
-        console.log(date);
 
         if (confirm == true) {
             Meteor.call("eventAddMaster", title, desc, author, date, timezone, groupRelevancy, function(error, id) {
@@ -94,7 +122,7 @@ Template.eventAddMaster.events({
             alert("Failed to confirm...");
             console.log("failed");
         }
-
+ */
     }
 
 
