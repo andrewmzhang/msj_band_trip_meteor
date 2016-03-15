@@ -23,6 +23,10 @@ Router.map(function() {
         data: function() {return Events.findOne(this.params._id);}
     });
 
+    this.route('users', {
+        path: '/users'
+    });
+
     this.route('eventAddMaster', {
         path: '/eventAddMaster'
     });
@@ -70,5 +74,5 @@ var adminonly = function() {
 
     }
 };
-Router.onBeforeAction(adminonly(), {only: 'eventAddMaster'});
+Router.onBeforeAction(adminonly, {only:[ "eventAddMaster", 'users']});
 //Router.onBeforeAction(adminonly, {only: 'users'});
