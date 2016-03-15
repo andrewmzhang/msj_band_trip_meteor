@@ -10,5 +10,15 @@ Template.users.helpers({
        }
        return false;
 
-   }
+   },
+
+    select: function(a, b) {
+        if (a === b) {
+            return 'selected'
+        }
+        if (a == null && b === 'user') {
+            return 'selected'
+        }
+    }
+
 });
