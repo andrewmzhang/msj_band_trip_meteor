@@ -22,7 +22,9 @@ tr:hover {
     background-color: lightblue;
 }
 
-
+.s-alert-box-inner p {
+    white-space: pre-wrap;
+}
 
 #login-screen .dropdown-menu {
     display: block;

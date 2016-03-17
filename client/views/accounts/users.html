@@ -10,11 +10,13 @@
         </thead>
         {{#each users}}
             <tr>
-                <td>{{emails.[0].address}}</td>
+                <td>{{#if isCurrentUser _id}}<label style="background-color: lime">You!</label>{{/if}}
+                    {{#if isSuper _id}}<label style="background-color: crimson; color: white;">SuperAdmin</label>{{/if}}
+                    {{emails.[0].address}}</td>
                 <td>
                     <label for="select1"></label>
-                    <select name="userRole" id="select1">
-                        <option {{select roles.[0] 'user'}} value="user">User</option>
+                    <select {{disableIfSuperAdmin _id}} name="userRole" id="select1">
+                        <option {{select roles.[0] 'user'}} value="">User</option>
                         <option {{select roles.[0] 'admin'}} value="admin">Admin</option>
 
                     </select>
