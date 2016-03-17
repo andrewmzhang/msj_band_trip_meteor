@@ -24,8 +24,14 @@ Meteor.methods({
 
         try {
             Roles.setUserRoles(options.user, [options.role]);
+            return true;
         } catch (exception) {
-            return exception;
+            console.log("Snot Working...");
+            throw new Meteor.Error("Server Failure", "Please try again!!");
         }
+
+        return true;
+
+
     }
 });

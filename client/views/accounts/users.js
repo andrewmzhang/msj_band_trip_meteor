@@ -34,6 +34,10 @@ Template.users.helpers({
             return "disabled";
         }
 
+        if (userid == Meteor.userId()) {
+            return "disabled"
+        }
+
         return "";
     },
 
@@ -48,18 +52,27 @@ Template.users.helpers({
 });
 
 Template.users.events({
-    'change [name="userRole"]': function(event, template) {
-        var role = $(event.target).find('option:selected').val();
-        console.log("New role: " + role);
 
-        Meteor.call("setRoleOnUser", {
-            user: this._id,
-            role: role
-        }, function(error, response) {
+    'change [name="userRole"]': function(event, template) {
+        var r = $(event.target).find('option:selected').val() + "";
+
+
+
+        var name = this._id;
+
+        var arr = {user: this._id, role: r};
+
+        Meteor.call("setRoleOnUser", arr, function(error) {
             if (error) {
-                sAlert.error(error.reason + "<br>" + response);
+                sAlert.error(error.error + "\n" + error.reason);
+            } else {
+                if (r == '') {
+                    r = "user"
+                }
+                sAlert.success(Meteor.users.findOne(name).emails[0].address + " is now a(n) " + r);
             }
         });
+
 
     }
 
