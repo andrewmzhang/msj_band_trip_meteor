@@ -7,6 +7,10 @@ Template.eventsList.helpers({
         return Events.find({}, {
             sort: {date: 1}
         });
+    },
+
+    updateValue: function() {
+        return updateValue;
     }
 
 });

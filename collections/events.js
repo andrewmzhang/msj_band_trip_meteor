@@ -2,8 +2,7 @@
  * Created by caesar on 3/9/16.
  */
 Events = new Meteor.Collection('events');
-
-
+updateValue = new Meteor.Collection('update_value');
 Meteor.methods({
     eventAddMaster: function (title, desc, author, date, timezone, gr) {
 
@@ -59,6 +58,19 @@ Events.allow({
         return false;
     },
     remove: function () {
+        return false;
+    }
+});
+
+
+updateValue.allow({
+    insert: function() {
+        return false;
+    },
+    update: function() {
+        return false;
+    },
+    remove: function() {
         return false;
     }
 });
