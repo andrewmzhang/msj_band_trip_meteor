@@ -5,6 +5,7 @@ Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',
     waitOn: function() {
+        Meteor.subscribe("update_value");
         Meteor.subscribe('users');
         return Meteor.subscribe('events');
 

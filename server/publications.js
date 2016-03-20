@@ -8,7 +8,13 @@ Meteor.publish('events', function (id) {
     return Events.find();
 });
 
+Meteor.publish('update_value', function () {
+    console.log('subscring to updateValue');
+    return updateValue.find();
+});
+
 Meteor.publish( 'users', function() {
+    console.log("Subscribin to uesrs");
     var isAdmin = Roles.userIsInRole( this.userId, 'admin' );
 
     if ( isAdmin ) {

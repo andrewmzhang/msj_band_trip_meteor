@@ -40,3 +40,25 @@ if (Events.find().count() === 0) {
 
 }
 
+if (updateValue.find().count() === 0) {
+    var random_id = Random.id();
+
+    console.log("New Rand id: " + random_id);
+
+    updateValue.insert({
+        val: random_id
+    });
+
+}
+
+
+if (updateValue.find().count() > 1) {
+    updateValue.remove({});
+
+    var a = Random.id();
+
+    updateValue.insert({
+        val: a
+    });
+}
+

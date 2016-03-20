@@ -15,6 +15,12 @@
 
  */
 
+Template.eventAddMaster.helpers({
+    'getAuthor': function () {
+        return Meteor.users.findOne().emails[0].address;
+    }
+});
+
 
 Template.eventAddMaster.events({
     'submit form': function (event) {

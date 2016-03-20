@@ -9,8 +9,8 @@ Template.eventsList.helpers({
         });
     },
 
-    updateValue: function() {
-        return updateValue;
+    updateValueOne: function () {
+        return updateValue.findOne().val;
     }
 
 });

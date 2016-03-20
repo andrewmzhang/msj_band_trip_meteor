@@ -40,3 +40,6 @@ momentjs:moment
 aldeed:collection2
 ecmascript
 check
+udondan:jszip
+harrison:papa-parse
+pfafman:filesaver
