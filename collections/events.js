@@ -2,32 +2,53 @@
  * Created by caesar on 3/9/16.
  */
 Events = new Meteor.Collection('events');
-/*
- var EventsSchema = new SimpleSchema({
- email: {
- type: String,
- label: "Email to send invite to."
- },
- token: {
- type: String,
- label: "Invitation token."
- },
- role: {
- type: String,
- label: "Role to apply to the user."
- },
- date: {
- type: String,
- label: "Invitation date"
- }
- });
 
- Invitations.attachSchema(InvitationSchema);
+var EventsSchema = new SimpleSchema({
+    title: {
+        type: String,
+        label: "Email to send invite to."
+    },
+    desc: {
+        type: String,
+        label: "Invitation token."
+    },
+    author: {
+        type: String,
+        label: "Role to apply to the user."
+    },
+    date: {
+        type: String,
+        label: "Invitation date"
+    },
+    timezone: {
+        type: String,
+        label: "Timezone of where the event occurs"
+    },
+    groupRelevancy: {
+        type: Number,
+        label: "what group we are refering too"
+    }
+});
 
- */
+Events.attachSchema(EventsSchema);
+
+
 
 updateValue = new Meteor.Collection('update_value');
+
+var updateSchema = new SimpleSchema({
+    val: {
+        type: String,
+        label: "Random signature of current update"
+    }
+});
+
+updateValue.attachSchema(updateSchema);
+
+
+
 Meteor.methods({
+
     eventAddMaster: function (title, desc, author, date, timezone, gr) {
 
 
