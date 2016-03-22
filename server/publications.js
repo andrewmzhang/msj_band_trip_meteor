@@ -9,7 +9,7 @@ Meteor.publish('events', function (id) {
 });
 
 Meteor.publish('update_value', function () {
-    console.log('subscring to updateValue');
+    console.log('subscribing to updateValue');
     return updateValue.find();
 });
 

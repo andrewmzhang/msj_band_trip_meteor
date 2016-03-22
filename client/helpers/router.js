@@ -17,6 +17,8 @@ Router.configure({
 Router.map(function() {
     this.route('eventsList', {path: '/'});
 
+
+
     this.route('login', {path: '/login'});
 
     this.route('eventPage', {
@@ -31,6 +33,8 @@ Router.map(function() {
     this.route('eventAddMaster', {
         path: '/eventAddMaster'
     });
+
+
 
  //   this.route('eventPage', {
  //       path: '/posts/:_id',
