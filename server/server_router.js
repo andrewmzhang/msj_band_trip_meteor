@@ -3,7 +3,7 @@
  */
 Router.map(function () {
     this.route('exportEvents', {
-        path: '/exportEvents',
+        path: '/exportEvents.json',
         where: 'server',
         action: function () {
             var json = Events.find().fetch(); // what ever data you want to return
@@ -12,7 +12,7 @@ Router.map(function () {
     });
 
     this.route('exportUpdate', {
-        path: '/exportUpdate',
+        path: '/exportUpdate.json',
         where: 'server',
         action: function() {
             var json = updateValue.findOne();
