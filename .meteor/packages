@@ -5,14 +5,12 @@
 
 xcv58:collection-api
 iron:router
-standard-minifiers
 sacha:spin
 accounts-password
 multiply:iron-router-progress
 meteorhacks:npm
 
 
-npm-container
 risul:moment-timezone
 mobile-experience
 mongo
@@ -43,3 +41,8 @@ check
 udondan:jszip
 harrison:papa-parse
 pfafman:filesaver
+
+
+npm-container
+standard-minifier-css
+standard-minifier-js
