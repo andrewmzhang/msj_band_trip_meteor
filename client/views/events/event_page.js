@@ -9,3 +9,17 @@ Template.eventPage.helpers({
 
     }
 });
+
+
+Template.eventPage.events({
+
+    'click .delete': function() {
+        Meteor.call('eventDeleteMaster', this._id, function(error, id) {
+            if (error) {
+                return sAlert.error("Delete Error: " + error.reason);
+            }
+            return sAlert.success("Event Deleted!!");
+        });
+    }
+
+});

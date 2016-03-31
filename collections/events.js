@@ -49,7 +49,33 @@ updateValue.attachSchema(updateSchema);
 
 Meteor.methods({
 
+    eventDeleteMaster: function(id) {
+
+        var loggedInUser = Meteor.user();
+        if (!Roles.userIsInRole(loggedInUser, ['admin'])) {
+            throw new Meteor.Error("Not an Admin", "Only admins can add Events");
+        } else {
+            Events.remove(id);
+            updateValue.remove({});
+
+            var random_id = Random.id();
+
+            updateValue.insert({
+                val: random_id
+            });
+        }
+    },
+
+
+
     eventAddMaster: function (title, desc, author, date, timezone, gr) {
+
+
+        var loggedInUser = Meteor.user();
+        if (!Roles.userIsInRole(loggedInUser, ['admin'])) {
+            throw new Meteor.Error("Not an Admin", "Only admins can add Events");
+        }
+
 
 
         var d = moment(date, 'YYYY-MM-DDThh:mm:ssZ', true);
