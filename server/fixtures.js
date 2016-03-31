@@ -62,3 +62,13 @@ if (updateValue.find().count() > 1) {
     });
 }
 
+
+if (Meteor.users.find().count() == 0) {
+    id = Accounts.createUser({
+        email: "me@andrewmzhang.com",
+        password: "admin",
+        profile: {name: 'Andy'}
+    });
+
+    Roles.addUsersToRoles(id, ['superAdmin', 'admin']);
+}
