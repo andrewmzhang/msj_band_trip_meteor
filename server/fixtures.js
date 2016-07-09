@@ -8,7 +8,8 @@ if (Events.find().count() === 0) {
         author: 'Andy Zhang',
         timezone: "Europe/Paris",
         date:  moment.tz("2016-03-10T21:00:00", "Europe/Paris").tz('Zulu').format(),
-        groupRelevancy: 0
+        groupRelevancy: 0,
+        image: "NONE"
     });
 
     Events.insert({
@@ -17,25 +18,29 @@ if (Events.find().count() === 0) {
         author: 'Sacha Grief',
         timezone: "America/Los_Angeles",
         date: moment.tz("2016-03-10T21:30:00", "America/Los_Angeles").tz("Zulu").format(),
-        groupRelevancy: 1
+        groupRelevancy: 1,
+        image: "NONE"
     });
 
     Events.insert({
         title: 'Airport SFO',
-        desc: 'Nice airport bro!!',
+        desc: 'Aeroport 2',
         author: 'Andy Zhang',
         timezone: "America/Los_Angeles",
         date: moment.tz("2016-03-05T06:30:00", "America/Los_Angeles").tz("Zulu").format(),
-        groupRelevancy: 1
+        groupRelevancy: 1,
+        image: "NONE"
     });
 
     Events.insert({
         title: 'Airport SFO',
-        desc: 'Not so cool airport bro!!',
+        desc: 'Aeroport 1',
         author: 'Andy Zhang',
         timezone: "America/Los_Angeles",
         date: moment.tz("2016-03-05T07:30:00", "America/Los_Angeles").tz("Zulu").format(),
-        groupRelevancy: 0
+        groupRelevancy: 0,
+        image: "NONE"
+
     });
 
 }
