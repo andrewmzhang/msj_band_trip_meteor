@@ -30,7 +30,6 @@ juliancwirko:s-alert-flip
 juliancwirko:s-alert-bouncyflip
 juliancwirko:s-alert-stackslide
 matdutour:popup-confirm
-accounts-ui-unstyled
 less
 random
 email
@@ -46,3 +45,12 @@ pfafman:filesaver
 npm-container
 standard-minifier-css
 standard-minifier-js
+service-configuration
+accounts-ui
+accounts-facebook
+reactive-var
+twbs:bootstrap
+themeteorchef:jquery-validation
+accounts-google
+splendido:accounts-meld
+ddp-rate-limiter

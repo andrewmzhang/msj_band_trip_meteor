@@ -1,4 +1,4 @@
-/**
- * Created by caesar on 3/19/16.
- */
+Meteor.startup(function () {
+    Modules.server.configureServices();
 
+});

@@ -7,6 +7,7 @@ Router.configure({
     waitOn: function() {
         Meteor.subscribe("update_value");
         Meteor.subscribe('users');
+        //Meteor.subscribe('serviceEmails');
         return Meteor.subscribe('events');
 
     },

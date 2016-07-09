@@ -12,7 +12,7 @@
             <tr>
                 <td>{{#if isCurrentUser _id}}<label style="background-color: lime">You!</label>{{/if}}
                     {{#if isSuper _id}}<label style="background-color: crimson; color: white;">SuperAdmin</label>{{/if}}
-                    {{emails.[0].address}}</td>
+                    {{getEmail this}}</td>
                 <td>
                     <label for="select1"></label>
                     <select {{disableIfSuperAdmin _id}} name="userRole" id="select1">
@@ -26,6 +26,5 @@
         {{/each}}
 
     </table>
-
 
 </template>

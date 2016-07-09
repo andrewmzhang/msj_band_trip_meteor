@@ -1,6 +1,22 @@
 <template name="login">
 
-    <div id="login-screen">
-        {{> loginButtons}}
+    <div class="page-header">
+        <h3>Sign In to System</h3>
     </div>
+
+    <button data-social-login="loginWithFacebook" type="button" class="btn">
+        <i class="fa fa-facebook"></i> Sign in with Facebook
+    </button>
+
+    <button data-social-login="loginWithGoogle" type="button" class="btn">
+        <i class="fa fa-google"></i> Sign in with Google
+    </button>
+
+    <h3>Sign in with Email</h3>
+
+    {{> signInWithEmailModal}}
+
+
+
 </template>
+

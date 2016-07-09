@@ -48,6 +48,10 @@ Template.users.helpers({
             return false;
         }
     },
+    
+    getEmail: function(uid) {
+        return Modules.both.getUserIndentity(uid);
+    }
 
 });
 
@@ -78,3 +82,4 @@ Template.users.events({
 
 
 });
+

@@ -19,10 +19,24 @@ Meteor.publish( 'users', function() {
 
     if ( isAdmin ) {
         return [
-            Meteor.users.find( {}, { fields: { "emails.address": 1, "roles": 1 } } ),
+            Meteor.users.find( {}, { fields: {
+                "emails.address": 1,
+                "services.facebook.email": 1,
+                "services.google.email": 1, "roles": 1 } } ),
             Invitations.find( {}, { fields: { "email": 1, "role": 1, "date": 1 } } )
         ];
     } else {
         return null;
     }
+});
+
+Meteor.publish( 'serviceEmails', function() {
+    return Meteor.users.find( this.userId, {
+        fields: {
+            "services.facebook.email": 1,
+            "services.google.email": 1,
+            "emails": 1,
+            "profile": 1
+        }
+    });
 });

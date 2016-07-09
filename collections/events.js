@@ -26,7 +26,11 @@ var EventsSchema = new SimpleSchema({
     },
     groupRelevancy: {
         type: Number,
-        label: "what group we are refering too"
+        label: "what group we are referring too"
+    },
+    image: {
+        type: String,
+        label: "Name of the image we will use."
     }
 });
 
@@ -68,7 +72,7 @@ Meteor.methods({
 
 
 
-    eventAddMaster: function (title, desc, author, date, timezone, gr) {
+    eventAddMaster: function (title, desc, author, date, timezone, gr, image) {
 
 
         var loggedInUser = Meteor.user();
@@ -110,7 +114,8 @@ Meteor.methods({
             author: author,
             date: date,
             timezone: timezone,
-            groupRelevancy: gr
+            groupRelevancy: gr,
+            image: "NONE"
         });
 
         updateValue.remove({});
